@@ -30,3 +30,4 @@ Currently, two official plugins are available:
 - [Documentación oficial](https://firebase.google.com/docs)
 - [Cloud Firestore Data model ](https://firebase.google.com/docs/firestore/data-model#hierarchical-data)
 - [Getting started with Cloud Firestore for the web](https://www.youtube.com/watch?v=BjtxPj6jRM8&ab_channel=Firebase)
+- [Firebase Realtime Database](https://firebase.google.com/docs/database)

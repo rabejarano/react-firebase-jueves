@@ -3,46 +3,83 @@ import {
   doc,
   collection,
   getDocs,
-  where,
-  documentId,
-  query,
+  updateDoc,
+  deleteDoc,
   getDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { fireStoreDB } from "../firebase";
 
 async function readUsers() {
-  const querySnapshot = await getDocs(collection(db, "users"));
+  const querySnapshot = await getDocs(collection(fireStoreDB, "users"));
   let response = querySnapshot.docs.map((doc) => doc.data());
   return response;
 }
 
-async function readUserById() {
-  const docRef = doc(db, "collection_1/documento");
+async function customDoc() {
+  const docRef = doc(
+    fireStoreDB,
+    "collection",
+    "document",
+    "nestedCollection",
+    "document"
+  );
   const querySnapshot = await getDoc(docRef);
-  console.log("querySnapshot.docs", querySnapshot.get());
+  if (querySnapshot.exists) return querySnapshot.data();
+  return null;
+}
+
+async function customCollection() {
+  const docsRef = collection(
+    fireStoreDB,
+    "collection",
+    "document",
+    "nestedCollection"
+  );
+  const querySnapshot = await getDocs(docsRef);
+  let response = querySnapshot.docs.map((doc) => doc.data());
+  return response;
+}
+
+async function readUserById(id) {
+  const querySnapshot = await getDocument("users", id);
+  console.log("querySnapshot", querySnapshot);
   return null;
 }
 
 async function getDocument(coll, id) {
-  const docRef = doc(db, coll, id);
+  const docRef = doc(fireStoreDB, coll, id);
   const docSnap = await getDoc(docRef);
   if (docSnap.exists()) return docSnap.data();
   else return null;
 }
 
-async function addUser() {
+async function deleteById(id) {
+  const docRef = doc(fireStoreDB, "users", id);
+  await deleteDoc(docRef);
+}
+
+async function addUser(name, lastName) {
   try {
-    const docRef = await addDoc(collection(db, "users"), {
-      first: "Alan",
-      middle: "Mathison",
-      last: "Turing",
-      born: 1912,
+    const docRef = await addDoc(collection(fireStoreDB, "users"), {
+      name: name,
+      lastName: lastName,
     });
 
-    console.log("Document written with ID: ", docRef.id);
+    await updateDoc(docRef, {
+      id: docRef.id,
+    });
+
+    return docRef.id;
   } catch (e) {
-    console.error("Error adding document: ", e);
+    return null;
   }
 }
 
-export { readUsers, addUser, readUserById };
+export {
+  readUsers,
+  addUser,
+  readUserById,
+  customDoc,
+  customCollection,
+  deleteById,
+};
