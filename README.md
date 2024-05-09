@@ -34,3 +34,5 @@ Currently, two official plugins are available:
 - [Choose a Database: Cloud Firestore or Realtime Database](https://firebase.google.com/docs/database/rtdb-vs-firestore)
 - [Firebase Authentication](https://firebase.google.com/docs/auth)
 - [Cloud Storage for Firebase](https://firebase.google.com/docs/storage)
+- [Firebase Hosting](https://firebase.google.com/docs/hosting)
+- [Vite + Firebase : How to deploy React App](https://medium.com/@rajdeepmallick999/vite-firebase-how-to-deploy-react-app-5e5090730147)
