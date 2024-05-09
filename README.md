@@ -31,3 +31,6 @@ Currently, two official plugins are available:
 - [Cloud Firestore Data model ](https://firebase.google.com/docs/firestore/data-model#hierarchical-data)
 - [Getting started with Cloud Firestore for the web](https://www.youtube.com/watch?v=BjtxPj6jRM8&ab_channel=Firebase)
 - [Firebase Realtime Database](https://firebase.google.com/docs/database)
+- [Choose a Database: Cloud Firestore or Realtime Database](https://firebase.google.com/docs/database/rtdb-vs-firestore)
+- [Firebase Authentication](https://firebase.google.com/docs/auth)
+- [Cloud Storage for Firebase](https://firebase.google.com/docs/storage)

@@ -9,6 +9,8 @@ import {
   deleteById,
 } from "./core/service/firebase/db/users";
 import { listenFeaturesFlags } from "./core/service/firebase/db/config";
+import { signIn, signUp } from "./core/service/firebase/auth";
+import { getImageUrlByName } from "./core/service/firebase/storage";
 
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
@@ -155,6 +157,42 @@ function App() {
         variant="contained"
       >
         Agregar
+      </Button>
+      <Box sx={{ mb: 2 }} />
+      <Button
+        onClick={async () => {
+          let response = await signUp(
+            "ricardoandb@gmail.com",
+            "siyofueraladronmerobariatusbesos"
+          );
+          console.log("response", response);
+        }}
+        variant="contained"
+      >
+        Create User Auth
+      </Button>
+      <Box sx={{ mb: 2 }} />
+      <Button
+        onClick={async () => {
+          let response = await signIn(
+            "ricardoandb@gmail.com",
+            "siyofueraladronmerobariatusbesos"
+          );
+          console.log("response", response);
+        }}
+        variant="contained"
+      >
+        Login User Auth
+      </Button>
+      <Box sx={{ mb: 2 }} />
+      <Button
+        onClick={async () => {
+          let response = await getImageUrlByName("one_way.png");
+          window.open(response);
+        }}
+        variant="contained"
+      >
+        Get Image
       </Button>
     </div>
   );
