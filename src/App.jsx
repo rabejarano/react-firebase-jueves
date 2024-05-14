@@ -77,7 +77,7 @@ function App() {
               <Card key={id} sx={{ minWidth: 275 }}>
                 <CardContent>
                   <Typography variant="h5" component="div">
-                    Name
+                    Name asdfasdfsad
                   </Typography>
                   <Typography sx={{ mb: 1.5 }} color="text.secondary">
                     {name}
